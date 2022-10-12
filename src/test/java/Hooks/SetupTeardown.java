@@ -15,4 +15,9 @@ public class SetupTeardown {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
+
+    @After
+    public void tearDown(){
+        driver.quit();
+    }
 }
