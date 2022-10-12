@@ -1,23 +1,23 @@
 package Utilities;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.time.Duration;
 
 public abstract class SetupTeardown {
-    WebDriver driver;
-    protected WebDriver getDriver(){
+    public static WebDriver driver;
+    @Before
+    protected void setUp(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get("https://www.makemytrip.com");
-        return driver;
     }
 
+    @After
     protected void Teardown(){
-        getDriver().quit();
+        driver.quit();
     }
 }
