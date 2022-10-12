@@ -33,7 +33,7 @@ public class AvailableFlights {
     }
     @Given("Selects the date of journey")
     public void selects_the_date_of_journey() {
-        homePage.departureDate("Sun Oct 09 2022");
+        homePage.departureDate("Sat Oct 22 2022");
     }
     @Given("Selects the class he wants to travel in")
     public void selects_the_class_he_wants_to_travel_in() {
@@ -41,7 +41,6 @@ public class AvailableFlights {
     }
     @Then("click search")
     public void click_search() {
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click", homePage.search);
+        homePage.search.click();
     }
 }
