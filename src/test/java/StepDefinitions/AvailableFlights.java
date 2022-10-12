@@ -1,19 +1,24 @@
 package StepDefinitions;
 
 import PageObjects.HomePage;
-import Utilities.SetupTeardown;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import io.cucumber.java.et.Ja;
+import org.openqa.selenium.JavascriptException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AvailableFlights extends SetupTeardown {
-    WebDriver driver = getDriver();
+import static Hooks.SetupTeardown.driver;
+
+public class AvailableFlights {
     HomePage homePage = new HomePage(driver);
+    @Given("User is in the homepage of MakeMyTrip.com")
+    public void user_is_in_the_homepage_of_make_my_trip_com() {
+        driver.get("https://www.makemytrip.com");
+    }
     @Given("User enters the from city")
     public void user_enters_the_from_city() {
         homePage.fromCity.sendKeys("Chennai");
@@ -31,11 +36,12 @@ public class AvailableFlights extends SetupTeardown {
         homePage.departureDate("Sun Oct 09 2022");
     }
     @Given("Selects the class he wants to travel in")
-    public void selects_the_class_he_wants_to_travel_in(String classType) {
-
+    public void selects_the_class_he_wants_to_travel_in() {
+        System.out.println("class selected");
     }
     @Then("click search")
     public void click_search() {
-        System.out.println(5);
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click", homePage.search);
     }
 }

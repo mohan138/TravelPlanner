@@ -23,7 +23,7 @@ public class HomePage {
     private WebElement departureDate;
     @FindBy(id = "travellers")
     public WebElement classType;
-    @FindBy(xpath = "//*[text() = 'Search']")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div/div/div[2]/p/a")
     public WebElement search;
     public void departureDate(String date){
         departureDate.click();
